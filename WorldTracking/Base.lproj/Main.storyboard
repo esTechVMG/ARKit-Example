@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WorldTracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsZ-HV-QfH" userLabel="El">
+                                <rect key="frame" x="184.5" y="816" width="45" height="30"/>
+                                <state key="normal" title="Añadir"/>
+                                <connections>
+                                    <action selector="addBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OTJ-wT-U4K"/>
+                                </connections>
+                            </button>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gR-No-dRO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="752"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJv-hz-Ypu">
+                                <rect key="frame" x="335" y="816" width="51" height="30"/>
+                                <state key="normal" title="Limpiar"/>
+                                <connections>
+                                    <action selector="restartButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="doX-y3-iFV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kJv-hz-Ypu" secondAttribute="bottom" constant="16" id="0Jw-Dn-q5i"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1gR-No-dRO" secondAttribute="trailing" id="5hj-Wb-Owj"/>
+                            <constraint firstItem="QsZ-HV-QfH" firstAttribute="top" secondItem="1gR-No-dRO" secondAttribute="bottom" constant="20" id="J0l-It-xAn"/>
+                            <constraint firstItem="1gR-No-dRO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="KaB-DE-gMt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kJv-hz-Ypu" secondAttribute="trailing" constant="28" id="NAQ-WS-DB7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QsZ-HV-QfH" secondAttribute="bottom" constant="16" id="PfS-le-Ecf"/>
+                            <constraint firstItem="QsZ-HV-QfH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Srs-iS-FzC"/>
+                            <constraint firstItem="1gR-No-dRO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qrc-GO-1SJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sceneView" destination="1gR-No-dRO" id="Sva-C0-L0K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140.57971014492756" y="138.61607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
