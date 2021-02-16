@@ -16,9 +16,26 @@ class ViewController: UIViewController {
         initSession()
         
         self.sceneView.autoenablesDefaultLighting = true
+        
+        let house = SCNNode()
+        let base = SCNBox(width: 0.25, height: 0.25, length: 0.25, chamferRadius: 0.0)
+        base.firstMaterial?.diffuse.contents = UIColor.yellow
+        let baseNode = SCNNode(geometry: base)
+        baseNode.position = SCNVector3(0.0,0.125,0)
+        house.addChildNode(baseNode)
+        
+        let roof = SCNPyramid(width: 0.25, height:0.125, length: 0.25)
+        roof.firstMaterial?.diffuse.contents = UIColor.brown
+        let roofNode = SCNNode(geometry: roof)
+        roofNode.position = SCNVector3(0.0,0.25,0.0)
+        house.addChildNode(roofNode)
+        
+        
+        self.sceneView.scene.rootNode.addChildNode(house)
     }
 
     @IBAction func addBtn(_ sender: Any) {
+        
         /*
         let node = SCNNode()
         node.geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1, chamferRadius: 0)
@@ -33,6 +50,7 @@ class ViewController: UIViewController {
         
         self.sceneView.scene.rootNode.addChildNode(node)
         */
+        /*
         let path = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: 0, y: 0.2))
@@ -40,15 +58,21 @@ class ViewController: UIViewController {
         path.addLine(to: CGPoint(x: 0.4, y: 0.2))
         path.addLine(to: CGPoint(x: 0.4, y: 0))
         let shape = SCNShape(path: path, extrusionDepth: 0.2)
-        let node = SCNNode()
+        
+        
         node.geometry = shape
         node.geometry?.firstMaterial?.specular.contents = UIColor.orange
         node.geometry?.firstMaterial?.diffuse.contents = UIColor.red
-        self.sceneView.scene.rootNode.addChildNode(node)
-    }
-    @IBAction func restartButton(_ sender: Any) {
+        
+        node.position = SCNVector3(0,0,0.3)
+        node.eulerAngles = SCNVector3(90.degreesToRadians,0,0)
+        */
         
     }
+    @IBAction func restartButton(_ sender: Any) {
+        restartSession()
+    }
+    
     func restartSession() {
         self.sceneView.session.pause()
         self.sceneView.scene.rootNode.enumerateChildNodes({(node,_) in
@@ -63,4 +87,7 @@ class ViewController: UIViewController {
         CGFloat(arc4random()) /  CGFloat(UINT32_MAX) * abs(firstNum-secondNum) + min(firstNum,secondNum)
     }
 }
-
+//Degrees to radians
+extension Int {
+    var degreesToRadians:Double{return Double(self) * .pi/180}
+}
