@@ -16,22 +16,29 @@ class ViewController: UIViewController {
         initSession()
         
         self.sceneView.autoenablesDefaultLighting = true
-        
-        let house = SCNNode()
+        let scene = SCNNode()
+        let ground = SCNNode(geometry: SCNPlane(width: 1, height: 1))
+        ground.position = SCNVector3(0,0,0)
+        ground.rotation = SCNVector4(1, 0, 0, 270.degreesToRadians)
+        ground.geometry?.firstMaterial?.diffuse.contents = UIColor.green
         let base = SCNBox(width: 0.25, height: 0.25, length: 0.25, chamferRadius: 0.0)
         base.firstMaterial?.diffuse.contents = UIColor.yellow
         let baseNode = SCNNode(geometry: base)
         baseNode.position = SCNVector3(0.0,0.125,0)
-        house.addChildNode(baseNode)
+        let doorNode = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.2))
+        doorNode.position = SCNVector3(0.125, 0, 0)
+        doorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.brown
+        doorNode.rotation = SCNVector4(0, 1, 0, 90.degreesToRadians)
         
         let roof = SCNPyramid(width: 0.25, height:0.125, length: 0.25)
         roof.firstMaterial?.diffuse.contents = UIColor.brown
         let roofNode = SCNNode(geometry: roof)
         roofNode.position = SCNVector3(0.0,0.25,0.0)
-        house.addChildNode(roofNode)
-        
-        
-        self.sceneView.scene.rootNode.addChildNode(house)
+        scene.addChildNode(roofNode)
+        scene.addChildNode(ground)
+        scene.addChildNode(baseNode)
+        scene.addChildNode(doorNode)
+        self.sceneView.scene.rootNode.addChildNode(scene)
     }
 
     @IBAction func addBtn(_ sender: Any) {
