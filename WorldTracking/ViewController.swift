@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         let baseNode = SCNNode(geometry: base)
         baseNode.position = SCNVector3(0.0,0.125,0)
         let doorNode = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.2))
-        doorNode.position = SCNVector3(0.125, 0, 0)
+        doorNode.position = SCNVector3(0.1250001, 0, 0)
         doorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.brown
         doorNode.rotation = SCNVector4(0, 1, 0, 90.degreesToRadians)
         
