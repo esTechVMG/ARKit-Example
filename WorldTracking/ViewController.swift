@@ -25,11 +25,21 @@ class ViewController: UIViewController {
         base.firstMaterial?.diffuse.contents = UIColor.yellow
         let baseNode = SCNNode(geometry: base)
         baseNode.position = SCNVector3(0.0,0.125,0)
-        let doorNode = SCNNode(geometry: SCNPlane(width: 0.1, height: 0.2))
-        doorNode.position = SCNVector3(0.1250001, 0, 0)
+        let doorNode = SCNNode(geometry: SCNPlane(width: 0.05, height: 0.1))
+        doorNode.position = SCNVector3(0.1251, 0.05, 0)
         doorNode.geometry?.firstMaterial?.diffuse.contents = UIColor.brown
-        doorNode.rotation = SCNVector4(0, 1, 0, 90.degreesToRadians)
+        let frontRotation:SCNVector4 = SCNVector4(0, 1, 0, 90.degreesToRadians)
+        doorNode.rotation = frontRotation
         
+        let window = SCNPlane(width: 0.05, height: 0.05)
+        window.firstMaterial?.diffuse.contents = UIColor.blue
+        let rightWindowNode = SCNNode(geometry: window)
+        let leftWindowNode = rightWindowNode.clone()
+        rightWindowNode.position = SCNVector3(0.1251, 0.2,0.05)
+        rightWindowNode.rotation = frontRotation
+        leftWindowNode.position = SCNVector3(0.1251,0.2,-0.05)
+        leftWindowNode.rotation = frontRotation
+        //
         let roof = SCNPyramid(width: 0.25, height:0.125, length: 0.25)
         roof.firstMaterial?.diffuse.contents = UIColor.brown
         let roofNode = SCNNode(geometry: roof)
@@ -38,6 +48,8 @@ class ViewController: UIViewController {
         scene.addChildNode(ground)
         scene.addChildNode(baseNode)
         scene.addChildNode(doorNode)
+        scene.addChildNode(leftWindowNode)
+        scene.addChildNode(rightWindowNode)
         self.sceneView.scene.rootNode.addChildNode(scene)
     }
 
